@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../data/snacks_data.dart';
 import '../models/models.dart';
 import 'notification_service.dart';
+import 'config_service.dart';
 
 class TimerService extends ChangeNotifier {
   Timer? _timer;
@@ -16,6 +16,7 @@ class TimerService extends ChangeNotifier {
   int _snackInterval = 45;
   bool _isPaused = false;
   DateTime? _pausedAt;
+  ConfigService? _configService;
 
   int get currentSnackIndex => _currentSnackIndex;
   int get remainingSeconds => _remainingSeconds;
@@ -24,6 +25,10 @@ class TimerService extends ChangeNotifier {
   int get currentExerciseIndex => _currentExerciseIndex;
   int get snackInterval => _snackInterval;
   bool get isPaused => _isPaused;
+
+  void setConfigService(ConfigService configService) {
+    _configService = configService;
+  }
   
   DateTime? get nextSnackTime {
     if (_lastSnackTime == null) return _getInitialSnackTime();
@@ -70,10 +75,11 @@ class TimerService extends ChangeNotifier {
   }
 
   void _triggerSnack() {
-    if (_currentSnackIndex >= SnacksData.snacks.length) {
+    if (_configService == null || _configService!.snacks.isEmpty) return;
+    if (_currentSnackIndex >= _configService!.snacks.length) {
       _currentSnackIndex = 0;
     }
-    _currentSnack = SnacksData.snacks[_currentSnackIndex];
+    _currentSnack = _configService!.snacks[_currentSnackIndex];
     NotificationService().showSnackNotification(_currentSnack!);
     notifyListeners();
   }

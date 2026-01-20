@@ -42,6 +42,7 @@ class Exercise {
   final String movement;
   final String whatToFeel;
   final List<String> errorsToAvoid;
+  final String? gifUrl;
 
   Exercise({
     required this.name,
@@ -51,6 +52,7 @@ class Exercise {
     required this.movement,
     required this.whatToFeel,
     required this.errorsToAvoid,
+    this.gifUrl,
   });
 
   Map<String, dynamic> toJson() => {
@@ -61,6 +63,7 @@ class Exercise {
     'movement': movement,
     'whatToFeel': whatToFeel,
     'errorsToAvoid': errorsToAvoid,
+    if (gifUrl != null) 'gifUrl': gifUrl,
   };
 
   factory Exercise.fromJson(Map<String, dynamic> json) => Exercise(
@@ -70,7 +73,8 @@ class Exercise {
     initialPosition: json['initialPosition'],
     movement: json['movement'],
     whatToFeel: json['whatToFeel'],
-    errorsToAvoid: List<String>.from(json['errorsToAvoid']),
+    errorsToAvoid: List<String>.from(json['errorsToAvoid'] ?? []),
+    gifUrl: json['gifUrl'],
   );
 }
 

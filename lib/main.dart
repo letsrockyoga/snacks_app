@@ -7,6 +7,7 @@ import 'screens/home_screen.dart';
 import 'services/timer_service.dart';
 import 'services/notification_service.dart';
 import 'services/data_service.dart';
+import 'services/config_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,10 +25,18 @@ void main() async {
   
   await NotificationService().init();
   
+  final configService = ConfigService();
+  final timerService = TimerService();
+  
+  // Wait for config to load
+  await configService.loadSnacks();
+  timerService.setConfigService(configService);
+  
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => TimerService()),
+        ChangeNotifierProvider.value(value: configService),
+        ChangeNotifierProvider.value(value: timerService),
         ChangeNotifierProvider(create: (_) => DataService()),
       ],
       child: const SnacksApp(),

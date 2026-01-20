@@ -4,21 +4,53 @@ import '../models/models.dart';
 import '../services/timer_service.dart';
 import '../services/data_service.dart';
 
-class SnackScreen extends StatelessWidget {
+class SnackScreen extends StatefulWidget {
   final Snack snack;
 
   const SnackScreen({super.key, required this.snack});
 
   @override
+  State<SnackScreen> createState() => _SnackScreenState();
+}
+
+class _SnackScreenState extends State<SnackScreen> {
+  final ScrollController _scrollController = ScrollController();
+  int _lastExerciseIndex = -1;
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToCurrentExercise(int currentIndex) {
+    if (currentIndex != _lastExerciseIndex && _scrollController.hasClients) {
+      _lastExerciseIndex = currentIndex;
+      final position = currentIndex * 400.0; // Approximate card height
+      _scrollController.animateTo(
+        position,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(snack.name),
+        title: Text(widget.snack.name),
       ),
       body: Consumer<TimerService>(
         builder: (context, timerService, _) {
           final minutes = timerService.remainingSeconds ~/ 60;
           final seconds = timerService.remainingSeconds % 60;
+
+          if (timerService.isSnackActive) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _scrollToCurrentExercise(timerService.currentExerciseIndex);
+            });
+          }
 
           return Column(
             children: [
@@ -32,7 +64,7 @@ class SnackScreen extends StatelessWidget {
                       style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     Text(
-                      snack.objective,
+                      widget.snack.objective,
                       style: const TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ],
@@ -40,10 +72,11 @@ class SnackScreen extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
+                  controller: _scrollController,
                   padding: const EdgeInsets.all(16),
-                  itemCount: snack.exercises.length,
+                  itemCount: widget.snack.exercises.length,
                   itemBuilder: (context, index) {
-                    final exercise = snack.exercises[index];
+                    final exercise = widget.snack.exercises[index];
                     final isCurrent = timerService.isSnackActive && 
                                      timerService.currentExerciseIndex == index;
                     return Card(
@@ -82,6 +115,27 @@ class SnackScreen extends StatelessWidget {
                                 '⏱️ ${exercise.duration} segundos',
                                 style: const TextStyle(color: Colors.black54),
                               ),
+                              if (exercise.gifUrl != null) ...[
+                                const SizedBox(height: 12),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    exercise.gifUrl!,
+                                    height: 200,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Container(
+                                        height: 200,
+                                        color: const Color(0xFFF8F8F8),
+                                        child: const Center(
+                                          child: Icon(Icons.image_not_supported, size: 48, color: Colors.black26),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
                               const SizedBox(height: 12),
                               _buildSection('Descripción', exercise.description),
                               _buildSection('Posición Inicial', exercise.initialPosition),
@@ -177,7 +231,7 @@ class SnackScreen extends StatelessWidget {
   Widget _buildEffortButton(BuildContext context, String emoji, String label, String level) {
     return ElevatedButton(
       onPressed: () async {
-        await context.read<DataService>().completeSnack(snack.id, snack.name, level);
+        await context.read<DataService>().completeSnack(widget.snack.id, widget.snack.name, level);
         if (context.mounted) {
           Navigator.pop(context);
         }

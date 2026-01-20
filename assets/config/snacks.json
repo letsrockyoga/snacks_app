@@ -1,0 +1,254 @@
+[
+  {
+    "id": 1,
+    "name": "ANTEBRAZOS EXPLOSIVOS",
+    "time": "08:45",
+    "duration": 165,
+    "objective": "Hipertrofia antebrazos",
+    "exercises": [
+      {
+        "name": "Postura de Oración Isométrica",
+        "duration": 60,
+        "description": "Presión palma contra palma frente al pecho",
+        "initialPosition": "De pie, palmas juntas frente al pecho",
+        "movement": "Presiona palmas con máxima fuerza durante 60 segundos",
+        "whatToFeel": "Tensión intensa en antebrazos y muñecas",
+        "errorsToAvoid": ["No elevar hombros", "Mantener codos a la altura del pecho"]
+      },
+      {
+        "name": "Flexiones de Muñeca con Peso Corporal",
+        "duration": 45,
+        "description": "Flexión y extensión de muñecas en posición de plancha",
+        "initialPosition": "Posición de plancha alta",
+        "movement": "Flexiona y extiende muñecas alternando 45 segundos",
+        "whatToFeel": "Trabajo intenso en antebrazos",
+        "errorsToAvoid": ["No colapsar core", "Mantener espalda recta"]
+      },
+      {
+        "name": "Agarre Isométrico",
+        "duration": 60,
+        "description": "Cierra puños con máxima fuerza",
+        "initialPosition": "De pie, brazos a los lados",
+        "movement": "Cierra puños con máxima intensidad 60 segundos",
+        "whatToFeel": "Tensión en antebrazos y manos",
+        "errorsToAvoid": ["No tensar cuello", "Respirar normalmente"]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "FUERZA SUPERIOR",
+    "time": "09:35",
+    "duration": 180,
+    "objective": "Pecho, hombros y tríceps",
+    "exercises": [
+      {
+        "name": "Flexiones Estándar",
+        "duration": 60,
+        "description": "Flexiones de pecho clásicas",
+        "initialPosition": "Plancha alta, manos ancho de hombros",
+        "movement": "Baja pecho al suelo, sube. Repite 60 segundos",
+        "whatToFeel": "Trabajo en pecho, hombros y tríceps",
+        "errorsToAvoid": ["No dejar caer cadera", "Codos a 45 grados"]
+      },
+      {
+        "name": "Fondos en Silla",
+        "duration": 60,
+        "description": "Fondos de tríceps usando silla",
+        "initialPosition": "Sentado en borde de silla, manos al lado de cadera",
+        "movement": "Desliza hacia adelante, baja y sube 60 segundos",
+        "whatToFeel": "Tensión en tríceps",
+        "errorsToAvoid": ["No separar codos", "Mantener espalda cerca de silla"]
+      },
+      {
+        "name": "Plancha Alta",
+        "duration": 60,
+        "description": "Mantén posición de plancha",
+        "initialPosition": "Plancha alta, cuerpo recto",
+        "movement": "Mantén posición 60 segundos",
+        "whatToFeel": "Tensión en core y hombros",
+        "errorsToAvoid": ["No elevar cadera", "Mantener cuello neutro"]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "FUERZA INFERIOR",
+    "time": "10:25",
+    "duration": 165,
+    "objective": "Piernas y glúteos",
+    "exercises": [
+      {
+        "name": "Sentadillas",
+        "duration": 60,
+        "description": "Sentadillas profundas",
+        "initialPosition": "De pie, pies ancho de hombros",
+        "movement": "Baja como si te sentaras, sube. Repite 60 segundos",
+        "whatToFeel": "Trabajo en cuádriceps y glúteos",
+        "errorsToAvoid": ["Rodillas no pasan dedos pies", "Espalda recta"]
+      },
+      {
+        "name": "Zancadas Alternas",
+        "duration": 60,
+        "description": "Zancadas alternando piernas",
+        "initialPosition": "De pie, manos en cadera",
+        "movement": "Da paso largo adelante, baja, alterna 60 segundos",
+        "whatToFeel": "Tensión en piernas y glúteos",
+        "errorsToAvoid": ["Rodilla trasera casi toca suelo", "Torso erguido"]
+      },
+      {
+        "name": "Elevación de Talones",
+        "duration": 45,
+        "description": "Elevaciones de pantorrilla",
+        "initialPosition": "De pie, pies juntos",
+        "movement": "Eleva talones, baja. Repite 45 segundos",
+        "whatToFeel": "Trabajo en pantorrillas",
+        "errorsToAvoid": ["Movimiento controlado", "No balancearse"]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "CORE INTENSO",
+    "time": "12:20",
+    "duration": 150,
+    "objective": "Abdomen y core",
+    "exercises": [
+      {
+        "name": "Plancha Frontal",
+        "duration": 60,
+        "description": "Plancha sobre antebrazos",
+        "initialPosition": "Antebrazos en suelo, cuerpo recto",
+        "movement": "Mantén posición 60 segundos",
+        "whatToFeel": "Tensión en abdomen",
+        "errorsToAvoid": ["No hundir cadera", "Cuello neutro"]
+      },
+      {
+        "name": "Bicicleta",
+        "duration": 60,
+        "description": "Crunch con rotación",
+        "initialPosition": "Tumbado, manos tras cabeza",
+        "movement": "Lleva codo a rodilla opuesta alternando 60 segundos",
+        "whatToFeel": "Trabajo en oblicuos",
+        "errorsToAvoid": ["No tirar del cuello", "Movimiento controlado"]
+      },
+      {
+        "name": "Plancha Lateral",
+        "duration": 30,
+        "description": "Plancha lateral cada lado",
+        "initialPosition": "De lado, antebrazo en suelo",
+        "movement": "Mantén 30 segundos cada lado",
+        "whatToFeel": "Tensión en oblicuos",
+        "errorsToAvoid": ["Cuerpo en línea recta", "No rotar cadera"]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "ANTEBRAZOS 2.0",
+    "time": "14:45",
+    "duration": 180,
+    "objective": "Antebrazos y agarre",
+    "exercises": [
+      {
+        "name": "Rotaciones de Muñeca",
+        "duration": 60,
+        "description": "Rotaciones circulares de muñecas",
+        "initialPosition": "Brazos extendidos al frente",
+        "movement": "Rota muñecas en círculos 60 segundos",
+        "whatToFeel": "Movilidad en muñecas",
+        "errorsToAvoid": ["Movimiento amplio", "Ambas direcciones"]
+      },
+      {
+        "name": "Agarre Dinámico",
+        "duration": 60,
+        "description": "Abre y cierra puños rápidamente",
+        "initialPosition": "Brazos extendidos",
+        "movement": "Abre y cierra manos rápido 60 segundos",
+        "whatToFeel": "Bombeo en antebrazos",
+        "errorsToAvoid": ["Máxima velocidad", "Apertura completa"]
+      },
+      {
+        "name": "Flexión Dorsal Isométrica",
+        "duration": 60,
+        "description": "Mantén manos en flexión dorsal",
+        "initialPosition": "Brazos extendidos, palmas arriba",
+        "movement": "Flexiona muñecas hacia arriba, mantén 60 segundos",
+        "whatToFeel": "Tensión en antebrazos",
+        "errorsToAvoid": ["No bajar manos", "Mantener tensión"]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "FUERZA SUPERIOR 2.0",
+    "time": "15:35",
+    "duration": 180,
+    "objective": "Espalda y bíceps",
+    "exercises": [
+      {
+        "name": "Superman",
+        "duration": 60,
+        "description": "Extensión lumbar",
+        "initialPosition": "Tumbado boca abajo, brazos extendidos",
+        "movement": "Eleva brazos y piernas, mantén 3 seg, baja. Repite 60 segundos",
+        "whatToFeel": "Trabajo en espalda baja",
+        "errorsToAvoid": ["No forzar cuello", "Movimiento controlado"]
+      },
+      {
+        "name": "Remo Isométrico",
+        "duration": 60,
+        "description": "Posición de remo mantenida",
+        "initialPosition": "De pie, inclinado adelante, codos atrás",
+        "movement": "Mantén codos hacia atrás 60 segundos",
+        "whatToFeel": "Tensión entre omóplatos",
+        "errorsToAvoid": ["Espalda recta", "Apretar omóplatos"]
+      },
+      {
+        "name": "Curl Isométrico",
+        "duration": 60,
+        "description": "Mantén brazos flexionados",
+        "initialPosition": "De pie, brazos flexionados 90 grados",
+        "movement": "Mantén posición con tensión 60 segundos",
+        "whatToFeel": "Tensión en bíceps",
+        "errorsToAvoid": ["Codos pegados al cuerpo", "No bajar brazos"]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "CARDIO HIIT",
+    "time": "16:25",
+    "duration": 180,
+    "objective": "Cardio y quema calórica",
+    "exercises": [
+      {
+        "name": "Jumping Jacks",
+        "duration": 60,
+        "description": "Saltos abriendo piernas y brazos",
+        "initialPosition": "De pie, pies juntos, brazos a los lados",
+        "movement": "Salta abriendo piernas y elevando brazos 60 segundos",
+        "whatToFeel": "Elevación de frecuencia cardíaca",
+        "errorsToAvoid": ["Aterrizar suave", "Ritmo constante"]
+      },
+      {
+        "name": "Burpees",
+        "duration": 60,
+        "description": "Secuencia completa de burpee",
+        "initialPosition": "De pie",
+        "movement": "Baja, plancha, flexión, salta arriba. Repite 60 segundos",
+        "whatToFeel": "Trabajo de cuerpo completo",
+        "errorsToAvoid": ["Mantener core activo", "Movimiento fluido"]
+      },
+      {
+        "name": "Mountain Climbers",
+        "duration": 60,
+        "description": "Escaladores en plancha",
+        "initialPosition": "Plancha alta",
+        "movement": "Lleva rodillas al pecho alternando rápido 60 segundos",
+        "whatToFeel": "Cardio intenso",
+        "errorsToAvoid": ["Cadera estable", "Máxima velocidad"]
+      }
+    ]
+  }
+]
