@@ -17,6 +17,7 @@ class TimerService extends ChangeNotifier {
   bool _isPaused = false;
   DateTime? _pausedAt;
   ConfigService? _configService;
+  bool _isStarted = false;
 
   int get currentSnackIndex => _currentSnackIndex;
   int get remainingSeconds => _remainingSeconds;
@@ -25,13 +26,14 @@ class TimerService extends ChangeNotifier {
   int get currentExerciseIndex => _currentExerciseIndex;
   int get snackInterval => _snackInterval;
   bool get isPaused => _isPaused;
+  bool get isStarted => _isStarted;
 
   void setConfigService(ConfigService configService) {
     _configService = configService;
   }
   
   DateTime? get nextSnackTime {
-    if (_lastSnackTime == null) return _getInitialSnackTime();
+    if (!_isStarted || _lastSnackTime == null) return null;
     if (_isPaused && _pausedAt != null) {
       return _pausedAt;
     }
@@ -47,10 +49,11 @@ class TimerService extends ChangeNotifier {
     final lastTime = prefs.getString('lastSnackTime');
     if (lastTime != null) {
       _lastSnackTime = DateTime.parse(lastTime);
+      _isStarted = true;
+      _startCountdown();
     }
     _currentSnackIndex = prefs.getInt('currentSnackIndex') ?? 0;
     _snackInterval = prefs.getInt('snackInterval') ?? 45;
-    _startCountdown();
   }
 
   DateTime _getInitialSnackTime() {
@@ -59,9 +62,10 @@ class TimerService extends ChangeNotifier {
   }
 
   void _startCountdown() {
+    _isStarted = true;
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (_isPaused || _isSnackActive) return;
+      if (_isPaused || _isSnackActive || !_isStarted) return;
       
       final next = nextSnackTime;
       if (next == null) return;
@@ -75,7 +79,7 @@ class TimerService extends ChangeNotifier {
   }
 
   void _triggerSnack() {
-    if (_configService == null || _configService!.snacks.isEmpty) return;
+    if (!_isStarted || _configService == null || _configService!.snacks.isEmpty) return;
     if (_currentSnackIndex >= _configService!.snacks.length) {
       _currentSnackIndex = 0;
     }
@@ -162,6 +166,9 @@ class TimerService extends ChangeNotifier {
     _lastSnackTime = DateTime.now();
     _isPaused = false;
     _pausedAt = null;
+    _isStarted = true;
+    _currentSnack = null;
+    _startCountdown();
     notifyListeners();
   }
 

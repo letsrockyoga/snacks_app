@@ -90,6 +90,43 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildNextSnackCard(TimerService timerService) {
     final isDisabled = timerService.isSnackActive;
     
+    if (!timerService.isStarted) {
+      return Card(
+        color: const Color(0xFFF8F8F8),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            children: [
+              const Icon(Icons.timer, size: 64, color: Color(0xFF32B8C6)),
+              const SizedBox(height: 16),
+              const Text(
+                'Temporizador Listo',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Presiona Iniciar para comenzar tu rutina de snacks',
+                style: TextStyle(fontSize: 14, color: Colors.black54),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: () => timerService.resetTimer(),
+                icon: const Icon(Icons.play_arrow),
+                label: const Text('Iniciar'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFD4AF37),
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    
     return Card(
       color: const Color(0xFFF8F8F8),
       child: Padding(
